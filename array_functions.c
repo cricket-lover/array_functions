@@ -11,6 +11,11 @@ int is_even(int a)
   return a % 2 == 0;
 }
 
+int add(int a, int b)
+{
+  return a + b;
+}
+
 Int_Array *map(Int_Array *array, Fn_Ref mapper)
 {
   Int_Array *newArray = malloc(sizeof(Int_Array));
@@ -18,7 +23,7 @@ Int_Array *map(Int_Array *array, Fn_Ref mapper)
   newArray->values = malloc(sizeof(int) * newArray->length);
   for (int i = 0; i < array->length; i++)
   {
-    newArray->values[i] = mapper(array->values[i]);
+    newArray->values[i] = (*mapper)(array->values[i]);
   }
 
   return newArray;
@@ -32,7 +37,7 @@ Int_Array *filter(Int_Array *array, Fn_Ref predicate)
   int index = 0, i = 0;
   while (i < array->length)
   {
-    if (predicate(array->values[i]))
+    if ((*predicate)(array->values[i]))
     {
       newArray->values[index] = array->values[i];
       index++;
@@ -42,4 +47,13 @@ Int_Array *filter(Int_Array *array, Fn_Ref predicate)
   newArray->length = index;
   newArray->values = realloc(newArray->values, sizeof(int) * newArray->length);
   return newArray;
+}
+
+int reduce(Int_Array *array, Reducer reducer, int context)
+{
+  for (int i = 0; i < array->length; i++)
+  {
+    context = (*reducer)(context, array->values[i]);
+  }
+  return context;
 }

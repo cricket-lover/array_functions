@@ -2,6 +2,7 @@
 #define __INT_ARRAY
 
 typedef int (*Fn_Ref)(int);
+typedef int (*Reducer)(int, int);
 typedef int *Int_Ptr;
 typedef struct
 {
