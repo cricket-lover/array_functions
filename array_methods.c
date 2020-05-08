@@ -1,5 +1,6 @@
 #include <stdlib.h>
 #include "int_array.h"
+#include "array_methods.h"
 
 Int_Array *map(Int_Array *array, Fn_Ref mapper)
 {
