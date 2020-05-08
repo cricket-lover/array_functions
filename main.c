@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include "int_array.h"
+#include "array_function.h"
 
 int main(void)
 {
@@ -14,6 +15,6 @@ int main(void)
   printf("Original array: ");
   display_int_array(numbers);
   Int_Array *squares = map(numbers, square_of_num);
-  printf("Mapped array: ");
+  printf("Mapped array with squares: ");
   display_int_array(squares);
 }
