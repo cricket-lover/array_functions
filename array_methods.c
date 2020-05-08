@@ -17,25 +17,20 @@ Int_Array *map(Int_Array *array, Fn_Ref mapper)
 
 Int_Array *filter(Int_Array *array, Fn_Ref predicate)
 {
-  Int_Array *newArray = malloc(sizeof(Int_Array));
-  newArray->length = array->length;
-  newArray->values = malloc(sizeof(int) * newArray->length);
-  int index = 0, i = 0;
-  while (i < array->length)
+  int temp_array[array->length];
+  int count = 0;
+  for (int i = 0; i < count; i++)
   {
     if ((*predicate)(array->values[i]))
     {
-      newArray->values[index] = array->values[i];
-      index++;
+      temp_array[count] = array->values[i];
+      count++;
     }
-    i++;
   }
-  newArray->length = index;
-  newArray->values = realloc(newArray->values, sizeof(int) * newArray->length);
-  return newArray;
+  return create_int_array_from(temp_array, count);
 }
 
-int reduce(Int_Array *array, Reducer reducer, int context)
+int reduce(Int_Array *array, ArthimeticFn reducer, int context)
 {
   for (int i = 0; i < array->length; i++)
   {
