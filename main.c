@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include "int_array.h"
-#include "array_function.h"
+#include "array_methods.h"
 
 int main(void)
 {
@@ -14,9 +14,11 @@ int main(void)
   numbers->values[3] = 5;
   printf("Original array: ");
   display_int_array(numbers);
+  
   Int_Array *squares = map(numbers, square_of_num);
   Int_Array *evens = filter(numbers, is_even);
   int sum = reduce(numbers, add, 0);
+  
   printf("Mapped array with squares: ");
   display_int_array(squares);
   printf("Even filtered array: ");

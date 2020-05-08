@@ -1,21 +1,6 @@
 #include <stdlib.h>
 #include "int_array.h"
 
-int square_of_num(int a)
-{
-  return a * a;
-}
-
-int is_even(int a)
-{
-  return a % 2 == 0;
-}
-
-int add(int a, int b)
-{
-  return a + b;
-}
-
 Int_Array *map(Int_Array *array, Fn_Ref mapper)
 {
   Int_Array *newArray = malloc(sizeof(Int_Array));
