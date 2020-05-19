@@ -1,3 +1,4 @@
+#include <stdio.h>
 #include <stdlib.h>
 #include "int_array.h"
 #include "array_methods.h"
@@ -19,7 +20,7 @@ Int_Array *filter(Int_Array *array, Fn_Ref predicate)
 {
   int temp_array[array->length];
   int count = 0;
-  for (int i = 0; i < count; i++)
+  for (int i = 0; i < array->length; i++)
   {
     if ((*predicate)(array->values[i]))
     {
@@ -37,4 +38,24 @@ int reduce(Int_Array *array, ArthimeticFn reducer, int context)
     context = (*reducer)(context, array->values[i]);
   }
   return context;
+}
+
+void selection_sort(Int_Array *numbers)
+{
+  for (int i = 0; i < numbers->length; i++)
+  {
+    int index_of_min = i;
+    for (int j = i + 1; j < numbers->length; j++)
+    {
+      if (numbers->values[j] < numbers->values[index_of_min])
+      {
+        index_of_min = j;
+      }
+    }
+    printf("%d %d\n", numbers->values[i], index_of_min);
+    int temp = numbers->values[index_of_min];
+    numbers->values[index_of_min] = numbers->values[i];
+    numbers->values[i] = temp;
+    display_int_array(numbers);
+  }
 }
