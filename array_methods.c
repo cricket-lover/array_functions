@@ -52,10 +52,30 @@ void selection_sort(Int_Array *numbers)
         index_of_min = j;
       }
     }
-    printf("%d %d\n", numbers->values[i], index_of_min);
     int temp = numbers->values[index_of_min];
     numbers->values[index_of_min] = numbers->values[i];
     numbers->values[i] = temp;
-    display_int_array(numbers);
+  }
+}
+
+void bubble_sort(Int_Array *numbers)
+{
+  for (int i = 0; i < numbers->length; i++)
+  {
+    int swaps = 0;
+    for (int j = i + 1; j < numbers->length; j++)
+    {
+      if (numbers->values[j] < numbers->values[j - 1])
+      {
+        int temp = numbers->values[j];
+        numbers->values[j] = numbers->values[j - 1];
+        numbers->values[j - 1] = temp;
+        swaps++;
+      }
+    }
+    if (swaps == 0)
+    {
+      break;
+    }
   }
 }
