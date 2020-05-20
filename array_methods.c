@@ -63,7 +63,7 @@ void bubble_sort(Int_Array *numbers)
   for (int i = 0; i < numbers->length; i++)
   {
     int swaps = 0;
-    for (int j = i + 1; j < numbers->length; j++)
+    for (int j = 1; j < numbers->length; j++)
     {
       if (numbers->values[j] < numbers->values[j - 1])
       {
